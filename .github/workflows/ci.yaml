@@ -3,7 +3,7 @@ name: LayingPipe
 on: 
   push:
     branches:
-      - main
+      - new_main
 
   pull_request:
     branches:
@@ -38,8 +38,8 @@ jobs:
       if: ${{success()}}
       run: |
         echo Success
-        git remote add heroku https://heroku:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/${{ secrets.HEROKU_APP_NAME }}.git
+        git remote add heroku https://heroku:${{ secrets.HEROKUAPIKEY }}@git.heroku.com/${{ secrets.HEROKUAPPNAME }}.git
 
     - name: Deploy to heroku
       run: |
-        git push heroku HEAD:main -f
+        git push heroku HEAD:new_main -f
